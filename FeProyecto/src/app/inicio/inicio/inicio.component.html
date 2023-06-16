@@ -1,0 +1,75 @@
+<div class="pagInicio">
+  <div fxLayoutAlign="center">
+    <section
+      class="et_pb_module et_pb_fullwidth_header et_pb_fullwidth_header_0 et_pb_text_align_center et_pb_bg_layout_dark"
+      data-fix-page-container="on"
+      style="padding-top: 90px"
+    >
+      <div class="et_pb_fullwidth_header_container center">
+        <div class="header-content-container center">
+          <div class="header-content">
+            <h1 class="et_pb_module_header">
+              REGISTRO DE MANTENIMIENTOS PUERTO DE HUELVA
+            </h1>
+
+            <div class="et_pb_header_content_wrapper">
+              <p>CONECTANDO EUROPA. ABIERTO AL MUNDO</p>
+            </div>
+
+            <button type="button" mat-raised-button color="primary">
+              <a href="https://www.puertohuelva.com/plano-interactivo-2/">
+                <span style="margin-right: 5px">PLANO INTERACTIVO</span
+                ><mat-icon style="margin-left: 5px">directions_boat</mat-icon>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="inicio-sesion" style="margin-top: 40px">
+        <section fxLayoutAlign="center">
+          <div style="padding-right: 10px">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              routerLink="/registrarse"
+              *ngIf="!estadoUsuario"
+            >
+              <a
+                ><span style="margin-right: 5px">Registro</span
+                ><mat-icon>how_to_reg</mat-icon></a
+              >
+            </button>
+          </div>
+
+          <div class="registro">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              routerLink="/login"
+              *ngIf="!estadoUsuario"
+            >
+              <a
+                ><span style="margin-right: 5px">Acceso </span
+                ><mat-icon>login</mat-icon></a
+              >
+            </button>
+          </div>
+          <div class="salir">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              routerLink="/login"
+              *ngIf="estadoUsuario"
+              (click)="terminarSesionMenu()"
+            >
+            <a><span style="margin-right: 5px">Salir </span><mat-icon>logout</mat-icon></a>
+            </button>
+        </div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>

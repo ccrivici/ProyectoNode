@@ -1,0 +1,63 @@
+<div fxLayoutAlign style="padding-top: 2vh;">
+  <div class="content" fxLayout="row" fxFlexFill>
+    <mat-form-field fxFlex="55%" style="margin-top:10px">
+      <input matInput type="text" (keyup)="hacerFiltro($event)" placeholder="Buscar ítem">
+    </mat-form-field>
+    <!-- BOTON AÑADIR ITEM -->
+    <button [routerLink]="['/registrar', this.idUbicacion]" fxFlex ="15%"  style="height: 54px; min-height: 100%; min-width: 100%; width: 100%; margin-top:10px;margin-left:80px" mat-raised-button type="submit" value="{{ id }}"> <a>
+      Añadir Item<mat-icon style="padding-left: 5px">add_circle</mat-icon></a>
+    </button>
+    <!-- BOTON AÑADIR MANTENIMIENTO -->
+    <button [routerLink]="['/registrarMantenimiento', this.idUbicacion]" fxFlex ="15%"  style="height: 54px; min-height: 100%; min-width: 100%; width: 100%; margin-left: 40px; margin-top:10px" mat-raised-button type="submit" value="{{ id }}"> <a>Añadir Mantenimiento<mat-icon style="padding-left: 5px">edit_document</mat-icon></a>
+    </button>
+    <!-- BOTON VOLVER -->
+    <button  (click)="goBack()" fxFlex ="8%"  style="height: 54px; min-height: 100%; min-width: 100%; width: 100%; margin-left: 40px; margin-top:10px" mat-raised-button type="submit" value="{{ id }}"> <a>
+      Volver<mat-icon style="padding-left: 5px">arrow_back</mat-icon></a>
+    </button>
+  </div>
+</div>
+<mat-table [dataSource]="dataSource"  matSort (matSortChange)="ordenarColumna($event)" class="responsive-table">
+  <ng-container matColumnDef="denominacion">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Denominación</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.denominacion }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ubicacion">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicación</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.ubicacion }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="conjuntoEquipo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Conjunto de Equipo</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.conjuntoEquipo }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="equipo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Equipo</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.equipo }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="marcaModelo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Marca o Modelo</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.marcaModelo }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="periocidad">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Periocidad</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.periocidad }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="categoria">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.categoria }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="modificar" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header style="justify-content: center;">Modificar ítem</mat-header-cell>
+    <mat-cell *matCellDef="let element" style="justify-content: center;" ><a  [routerLink]="['/registrar', element._id,idUbicacion]" ><mat-icon>update</mat-icon></a></mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="eliminar">
+    <mat-header-cell *matHeaderCellDef mat-sort-header style="justify-content: center;"> Eliminar ítem</mat-header-cell>
+    <mat-cell *matCellDef="let element" style="justify-content: center;"><button class="eliminar-button" (click)="eliminar(element._id)" (click)="eliminarRegistro(element.id)"><mat-icon>delete</mat-icon></button></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="desplegarColumnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: desplegarColumnas; let even = even" [ngClass]="{ 'even-row': even }"></mat-row>
+</mat-table>
+<mat-paginator (page)="eventoPaginador($event)" #paginacion [pageSize]="itemsPorPagina" [pageSizeOptions]="paginaCombo" [length]="totalItems" > </mat-paginator>
+

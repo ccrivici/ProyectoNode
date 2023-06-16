@@ -1,0 +1,28 @@
+
+
+
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef r>nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nombre }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="items">
+    <mat-header-cell *matHeaderCellDef >Ver items</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a href="/items?id={{element.id}}">ver items</a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mantenimientos">
+    <mat-header-cell *matHeaderCellDef >ver mantenimientos</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a href="">ver informes</a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="generarPdf">
+    <mat-header-cell *matHeaderCellDef >modificar ubicacion</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a href="/pdf">modificar ubicacion</a></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="desplegarColumnas">
+    <mat-row *matRowDef="let row; columns: desplegarColumnas"> </mat-row>
+  </mat-header-row>
+</mat-table>

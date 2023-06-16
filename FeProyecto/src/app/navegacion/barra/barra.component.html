@@ -1,0 +1,31 @@
+<mat-toolbar style="background-color: #4b9fe1">
+  <div fxLayoutAlign="center" class="titulo"><a>GESTION DE MANTENIMIENTOS (APH)</a></div>
+  <ul fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-center" class="navegacion-menu">
+    <div fxFlex fxLayoutAlign="center" style="padding-left: 12vh;">
+      <li>
+        <button mat-icon-button routerLink="/puertos">
+          <mat-icon>anchor</mat-icon></button
+        ><a routerLink="/puertos">Puertos</a>
+      </li>
+      <li>
+        <button mat-icon-button routerLink="/edificios">
+          <mat-icon>apartment</mat-icon></button
+        ><a routerLink="/edificios">Edificios</a>
+      </li>
+    </div>
+    <div fxFlex fxLayoutAlign="flex-end">
+      <li>
+        <button mat-icon-button routerLink="/inicio">
+          <mat-icon>home</mat-icon></button
+        ><a routerLink="/inicio">Inicio</a>
+      </li>
+
+      <li>
+        <button mat-icon-button (click)="onMenuToggleDispatch()">
+          <mat-icon>manage_accounts</mat-icon>
+        </button>
+        <a (click)="onMenuToggleDispatch()">Usuario</a>
+      </li>
+    </div>
+  </ul>
+</mat-toolbar>

@@ -1,0 +1,37 @@
+version: '3'
+services:
+  puertonode:
+    image: puertonode
+    container_name: puertonode
+    hostname: puertonode
+    build:
+      context: /backNodeJs
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb7
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backNodeJs:/app
+  mongodb7:
+    build:
+      context: ./backNodeJs
+      dockerfile: Dockerfile-mongo
+    volumes:
+      - /var/lib/docker/volumes/docker/_data:/data/db
+    ports:
+      - "27017:27017"
+  gatewaynode:
+    image: gatewaynode
+    hostname: gatewaynode
+    container_name: gatewaynode
+    build:
+      context: ./BeProyecto/Servicios.api.Gateway
+      dockerfile: Dockerfile    
+    restart: always
+    ports:
+      - "8590:80"
+    links:
+      - puertonode
+    depends_on:
+      - puertonode

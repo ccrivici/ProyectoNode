@@ -1,0 +1,162 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/item",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "puertonode",
+          "Port": "3000"
+        }
+      ],
+      "UpstreamPathTemplate": "/item",
+      "UpstreamHttpMethod": [ "POST", "GET", "UPDATE", "DELETE" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/item/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/item/{id}",
+        "UpstreamHttpMethod": [ "GET", "UPDATE", "DELETE", "PUT" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/mantenimiento",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/mantenimiento",
+        "UpstreamHttpMethod": [ "POST", "GET", "UPDATE", "DELETE" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/mantenimiento/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/mantenimiento/{id}",
+        "UpstreamHttpMethod": [ "GET", "UPDATE", "DELETE", "PUT" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/ubicacion",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/ubicacion",
+        "UpstreamHttpMethod": [ "POST", "GET", "UPDATE", "DELETE" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/ubicacion/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/ubicacion/{id}",
+        "UpstreamHttpMethod": [ "GET", "UPDATE", "DELETE", "PUT" ]
+      },
+
+
+
+    {
+      "DownstreamPathTemplate": "/api/item/pagination",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "puertonode",
+          "Port": "3000"
+        }
+      ],
+      "UpstreamPathTemplate": "/item/pagination",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+
+      {
+        "DownstreamPathTemplate": "/api/ubicacion/pagination",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/ubicacion/pagination",
+        "UpstreamHttpMethod": [ "POST" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/mantenimiento/pagination",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/mantenimiento/pagination",
+        "UpstreamHttpMethod": [ "POST" ]
+      },
+
+      {
+        "DownstreamPathTemplate": "/api/users",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+        ],
+        "UpstreamPathTemplate": "/usuario",
+        "UpstreamHttpMethod": [ "GET" ]
+      },
+      
+    {
+      "DownstreamPathTemplate": "/api/auth/registrar",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "puertonode",
+          "Port": "3000"
+        }
+      ],
+      "UpstreamPathTemplate": "/usuario/registrar",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+
+      {
+        "DownstreamPathTemplate": "/api/auth/login",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "puertonode",
+            "Port": "3000"
+          }
+
+        ],
+        "UpstreamPathTemplate": "/usuario/login",
+        "UpstreamHttpMethod": [ "POST" ]
+      }
+
+  ]
+}

@@ -1,0 +1,50 @@
+mat-form-field{
+  width: 100%;
+}
+
+mat-card{
+  width: 400px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+  margin-top: 40px;
+  height: 40px;
+}
+
+button[type="submit"]:enabled{
+  background-color: #4b9fe1;
+}
+#icon{
+  color: rgb(34, 20, 159);
+}
+form {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+mat-card{
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 1); /* Agrega un efecto de sombra */
+  /* o */
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); Agrega un efecto más elevado (raised) */
+  border-radius: 1px; /* Agrega bordes redondeados */
+  overflow: hidden; /* Evita que la sombra se muestre fuera del borde */
+}

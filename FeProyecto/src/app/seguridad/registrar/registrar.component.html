@@ -1,0 +1,52 @@
+<section>
+  <mat-card>
+  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="registrarUsuario(f)" fxLayoutGap="10px">
+
+    <!--Campo Input Nombre-->
+    <mat-form-field>
+      <mat-label>Ingrese Nombre</mat-label>
+      <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">person</span></mat-icon>
+      <input type="text"matInput  placeholder="Ingrese su Nombre"ngModel name="nombre"/>
+    </mat-form-field>
+
+    <!--Campo Input Apellidos-->
+    <mat-form-field>
+      <mat-label>Ingrese Apellidos</mat-label>
+      <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">kitesurfing</span></mat-icon>
+      <input type="text" matInput placeholder="Ingrese sus Apellidos" ngModel name="apellido" />
+      <mat-error>Los apellidos no puede estar en blanco</mat-error>
+    </mat-form-field>
+
+    <!--Campo Input Username-->
+    <mat-form-field>
+      <mat-label>Ingrese Nombre de Usuario</mat-label>
+      <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">account_circle</span></mat-icon>
+      <input type="text" matInput placeholder="Introduzca el nombre de usuario" ngModel name="usuario"required />
+      <mat-error>El Usuario no puede estar en blanco</mat-error>
+    </mat-form-field>
+
+    <!--Campo Input E-Mail-->
+    <mat-form-field>
+      <mat-label>Ingrese E-Mail</mat-label>
+      <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">mail</span></mat-icon>
+      <input type="email" matInput placeholder="mail_example@gmail.com" ngModel name="email" email required #emailInput="ngModel"/>
+      <mat-error *ngIf="emailInput.hasError('required')">El E-mail no puede estar en blanco</mat-error >
+      <mat-error *ngIf="!emailInput.hasError('required')"> El E-mail es invalido, debe ser formato E-mail</mat-error >
+    </mat-form-field>
+
+    <!--Campo Input Contraseña-->
+    <mat-form-field hintLabel="La contraseña debe tener minimo 7 caracteres, una mayúscula y una caracter especial ($%!..)">
+      <mat-label>Ingrese la Contraseña</mat-label>
+      <mat-icon class="custom-icon" id="icon"(click)="mostrar()" matPrefix style="font-size: 24px;"><span class="material-icons-filled">visibility_lock</span></mat-icon>
+      <input type="password" id="pswd"matInput placeholder="" ngModel name="password" required  #pwdInput="ngModel">
+      <mat-error *ngIf="pwdInput.hasError('pattern')">La contraseña debe tener al menos una letra mayúscula y un caracter especial ($, !, %, *, ?, &)</mat-error>
+      <mat-error *ngIf="pwdInput.hasError('required')">La contraseña no puede estar en blanco</mat-error>
+      <mat-error *ngIf="pwdInput.hasError('minlength')">La contraseña debe tener más de 7 caracteres</mat-error>
+
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">
+      <a><span style="margin-right: 5px">Registro</span><mat-icon>how_to_reg</mat-icon></a>
+    </button>
+  </form>
+</mat-card>
+</section>

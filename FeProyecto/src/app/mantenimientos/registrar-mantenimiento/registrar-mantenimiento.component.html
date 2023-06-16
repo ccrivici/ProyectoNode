@@ -1,0 +1,95 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="alert alert-success my-4 animate__animated animate__fadeIn" role="alert" *ngIf="mostrarCarta">
+  <h4 class="alert-heading" style="font-size: 1.5rem;">¡Éxito!</h4>
+  <p class="mb-0" style="font-size: 1.2rem;"><mat-icon matSuffix>task_alt</mat-icon> {{ mensajeItemAnadido }}</p>
+</div>
+<section fxLayout="row" fxLayoutAlign="center">
+  <mat-card>
+    <form [formGroup]="mantenimientoForm" (ngSubmit)="registrarEditarMantenimiento()" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm">
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <!-- SELECCIÓN DE ÍTEM A MANTENER -->
+          <mat-form-field>
+            <mat-label>Elemento</mat-label>
+            <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">category</mat-icon>
+            <mat-select formControlName="elementos" (selectionChange)="onSelected($event)" name="elementos" [(ngModel)]="selectItem">
+              <mat-option *ngFor="let item of items" value="{{ item['_id'] }}">{{item.marcaModelo}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- ESTADO -->
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">rowing</mat-icon>
+
+            <mat-select formControlName="estado" name="estado">
+              <mat-option value="Favorable">Favorable</mat-option>
+              <mat-option value="Defecto Leve">Defecto Leve</mat-option>
+              <mat-option value="Defecto Grave">Defecto Grave</mat-option>
+              <mat-option value="Defecto Crítico">Defecto Crítico</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+          <!-- CORREGIDO -->
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-form-field>
+            <mat-label>Corregido</mat-label>
+            <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">rule</mat-icon>
+
+            <mat-select formControlName="corregido" [(ngModel)]="selectCorregido" name="corregido">
+              <mat-option value="true">Si</mat-option>
+              <mat-option value="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+            <!-- OBSERVACIONES -->
+            <mat-form-field>
+              <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">assignment</mat-icon>
+              <mat-label>Observaciones</mat-label>
+              <input type="text" formControlName="observaciones" matInput name="observacionMantenimiento" ngModel/>
+            </mat-form-field>
+        </div>
+      </div>
+      <!-- PERIOCIDAD -->
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-form-field fxFlex="100">
+            <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">timer</span></mat-icon>
+            <mat-label>Periodicidad</mat-label>
+            <input matInput type="text" formControlName="periocidad" name="periocidad"readonly/>
+          </mat-form-field>
+          <!-- FECHA DE MANTENIMIENTO -->
+          <mat-form-field fxFlex="100">
+            <input matInput formControlName="fechaMantenimiento" placeholder="Fecha del Mantenimiento" [matDatepicker]="picker" name="fechaMantenimiento"/>
+            <mat-datepicker-toggle matPrefix [for]="picker">
+            <mat-icon  matDatepickerToggleIcon style="font-size: 24px; color: #333333;">calendar_month</mat-icon></mat-datepicker-toggle>
+            <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+            <ng-container *ngIf="fechaSugeridaCoincide">
+              <style>
+                ::ng-deep .mat-calendar .mat-calendar-body .mat-calendar-body-cell.highlight-date-sugerida {
+                  background-color: rgb(59, 182, 231); /* Elige el color que desees para resaltar la celda */
+                  border-radius: 50%; /* Hace que el resaltado sea redondo */
+                }
+              </style>
+            </ng-container>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- DESCRIPCIÓN -->
+      <div fxLayout="column" fxFlex="85">
+        <mat-form-field>
+          <mat-label>Descripcion del Mantenimiento</mat-label>
+          <textarea formControlName="descripcion" matInput name="descripcionMantenimiento" ngModel required rows="3"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxFlex="100">
+        <button mat-raised-button color="primary" type="submit"[disabled]="f.invalid">
+          <a>{{ accion }} Mantenimiento<mat-icon style="padding-left: 2px">add_circle</mat-icon></a>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</section>

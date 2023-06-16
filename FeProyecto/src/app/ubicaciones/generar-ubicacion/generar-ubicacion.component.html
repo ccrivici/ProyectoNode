@@ -1,0 +1,26 @@
+<section>
+
+  <h2 fxLayoutAlign="center center" >Añadir ubicaciones</h2>
+  <form fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="registrarActualizarUbicacion(f)" #f="ngForm" fxLayoutGap="10px">
+    <mat-form-field>
+      <mat-label>Introduzca el nombre</mat-label>
+      <input matInput placeholder="Elija el nombre" ngModel name="nombre" required #nombreInput="ngModel"/>
+      <mat-error *ngIf="nombreInput.hasError('required')">El nombre no puede estar en blanco</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Seleccione el tipo de ubicacion</mat-label>
+      <mat-select [(ngModel)]="selectTipo" name="tipo">
+        <mat-option value="puerto">Puerto</mat-option>
+        <mat-option value="edificio">Edificio</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+
+
+
+    <button mat-button color="primary" type="submit" style="border: 1px solid #000000;">Enviar</button>
+  </form>
+</section>

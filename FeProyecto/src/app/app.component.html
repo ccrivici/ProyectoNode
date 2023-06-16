@@ -1,0 +1,163 @@
+<div>
+  <body>
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav
+        #sideNav
+        role="navigation"
+        mode="over"
+        position="end"
+        fixedInViewport="true"
+      >
+        <app-menu-lista (menuToggle)="sideNav.toggle()"></app-menu-lista>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <app-barra (menuToggle)="sideNav.toggle()"></app-barra>
+        <div class="contenedor">
+          <div class="fondo"></div>
+          <main class="main">
+            <div class="card-container">
+              <mat-card
+                fxLayout="row"
+                fxLayoutAlign="center center"
+                class="titulo info_actual"
+                ></mat-card>
+            </div>
+            <router-outlet></router-outlet>
+          </main>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+  </body>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-bottom" style="padding-top: 5px">
+        <h4>Contacto</h4>
+        <p>Teléfono: (+34) 959 49 31 00</p>
+        <p>Email: info@puertohuelva.es</p>
+
+        <h4>Dirección</h4>
+        <p>AVDA. REAL SOCIEDAD COLOMBINA ONUBENSE, S/N</p>
+        <p>21001 Huelva</p>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 Todos los derechos reservados. Desarrollado por
+          <a href="#">Alumno</a>
+        </p>
+        <p>Contacto: aph@puertohuelva.com</p>
+        <div
+          style="display: flex; flex-direction: row; justify-content: center"
+        >
+          <div class="iconMargin">
+            <div style="display: flex; flex-direction: column">
+              <a
+                href="https://www.facebook.com/AutoridadPortuariaDeHuelva"
+                target="_blank"
+              >
+                <img
+                  decoding="async"
+                  width="32"
+                  height="32"
+                  src="https://aphazwordpress.azurewebsites.net/wp-content/uploads/2020/12/001-facebook.png"
+                  srcset="
+                    https://www.puertohuelva.com/wp-content/uploads/2020/12/001-facebook.png         256w,
+                    https://www.puertohuelva.com/wp-content/uploads/2020/12/001-facebook-150x150.png 150w
+                  "
+                />
+              </a>
+            </div>
+          </div>
+          <div class="iconMargin" style="display: flex; flex-direction: column">
+            <a href="https://twitter.com/APHuelva" target="_blank">
+              <img
+                decoding="async"
+                width="32"
+                height="32"
+                src="https://aphazwordpress.azurewebsites.net/wp-content/uploads/2020/12/002-twitter.png"
+                alt=""
+                srcset="
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/002-twitter.png         256w,
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/002-twitter-150x150.png 150w
+                "
+            /></a>
+          </div>
+          <div class="iconMargin" style="display: flex; flex-direction: column">
+            <a href="https://www.instagram.com/puertodehuelva" target="_blank"
+              ><img
+                decoding="async"
+                width="32"
+                height="32"
+                src="https://aphazwordpress.azurewebsites.net/wp-content/uploads/2020/12/004-instagram.png"
+                alt=""
+                srcset="
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/004-instagram.png         256w,
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/004-instagram-150x150.png 150w
+                "
+              />
+            </a>
+          </div>
+          <div class="iconMargin" style="display: flex; flex-direction: column">
+            <a
+              href="https://www.linkedin.com/company/autoridad-portuaria-huelva"
+              target="_blank"
+              ><img
+                decoding="async"
+                width="32"
+                height="32"
+                src="https://aphazwordpress.azurewebsites.net/wp-content/uploads/2020/12/003-linkedin.png"
+                alt=""
+                srcset="
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/003-linkedin.png         256w,
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/003-linkedin-150x150.png 150w
+                "
+              />
+            </a>
+          </div>
+          <div class="iconMargin" style="display: flex; flex-direction: column">
+            <a
+              href="https://www.youtube.com/channel/UC-8dE-zLeW1AlpsN6bajAvg"
+              target="_blank"
+              ><img
+                decoding="async"
+                width="32"
+                height="32"
+                src="https://aphazwordpress.azurewebsites.net/wp-content/uploads/2020/12/005-youtube.png"
+                alt=""
+                srcset="
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/005-youtube.png         256w,
+                  https://www.puertohuelva.com/wp-content/uploads/2020/12/005-youtube-150x150.png 150w
+                "
+            /></a>
+          </div>
+        </div>
+        <div class="footer-item" style="margin-top: 20px">
+          <span style="color: #808080"
+            ><a
+              href="https://goo.gl/maps/8HNFWgAyX4bAptyu7"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #808080"
+              >CÓMO LLEGAR</a
+            >&nbsp; |&nbsp;
+            <a
+              href="https://www.puertohuelva.com/aviso-legal/"
+              style="color: #808080"
+              >AVISO LEGAL</a
+            >&nbsp; |&nbsp;
+            <a
+              href="https://www.puertohuelva.com/politica-de-privacidad/"
+              style="color: #808080"
+              >POLÍTICA DE PRIVACIDAD</a
+            >&nbsp; |&nbsp;
+            <a
+              href="https://www.puertohuelva.com/politica-de-cookies/"
+              style="color: #808080"
+              >POLÍTICA DE COOKIES</a
+            >&nbsp;</span
+          >
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

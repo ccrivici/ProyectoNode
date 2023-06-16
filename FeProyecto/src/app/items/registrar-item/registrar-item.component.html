@@ -1,0 +1,158 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="alert alert-success my-4 animate__animated animate__fadeIn" role="alert" *ngIf="mostrarCarta">
+  <h4 class="alert-heading" style="font-size: 1.5rem;">¡Éxito!</h4>
+  <p class="mb-0" style="font-size: 1.2rem;"><mat-icon matSuffix>task_alt</mat-icon> {{ mensajeItemAnadido }}</p>
+</div>
+<section fxLayout="row" fxLayoutAlign="center">
+  <mat-card>
+<form
+  [formGroup]="itemForm"
+  (ngSubmit)="registrarEditarItems()"
+  #f="ngForm"
+  fxLayoutGap="10px"
+  fxLayout="row wrap"
+  fxLayoutAlign="center center"
+>
+  <!-- DENOMINACIÓN -->
+<div fxLayout="column" fxFlex="100">
+  <div fxLayout="row" fxLayoutAlign="start start">
+  <mat-form-field>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">location_on</mat-icon>
+    <mat-select
+      formControlName="denominacion"
+      name="denominacion"
+      [(ngModel)]="selectDenominacion"
+      [compareWith]="compareWith"
+    >
+      <mat-option *ngFor="let ubi of ubicaciones" value="{{ ubi }}">
+        {{ ubi.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- INGRESAR UBICACION -->
+  <mat-form-field>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">maps_home_work</mat-icon>
+    <mat-label>Ubicacion</mat-label>
+    <input
+      matInput
+      placeholder="Elija ubicacion"
+      formControlName="ubicacion"
+      name="ubicacion"
+      required
+    />
+  </mat-form-field>
+</div>
+</div>
+  <!-- SELECCIONAR CONJUNTO DE EQUIPOS -->
+  <mat-form-field>
+    <mat-label>Conjunto de equipos</mat-label>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">construction</mat-icon>
+    <mat-select
+      formControlName="conjuntoEquipo"
+      name="conjuntoEquipo"
+      [(ngModel)]="selectconjuntoEquipo"
+    >
+      <mat-option value="totem de identificacion doble"
+        >totem de identificacion doble</mat-option
+      >
+      <mat-option value="totem de camaras">totem de camaras</mat-option>
+      <mat-option value="torniquete de peatones"
+        >torniquete de peatones</mat-option
+      >
+      <mat-option value="puesto de vigilancia">puesto de vigilancia</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- TOTEM DE IDENTIFICACION DOBLE -->
+  <mat-form-field
+    *ngIf="selectconjuntoEquipo == 'totem de identificacion doble'"
+  >
+    <mat-label>Tipo de equipo</mat-label>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">badge</mat-icon>
+
+    <mat-select formControlName="equipo" name="equipo">
+      <mat-option value="panel pc">panel pc</mat-option>
+      <mat-option value="lector de tarjetas Mifare"
+        >lector de tarjetas Mifare</mat-option
+      >
+      <mat-option value="lector Qr">lector Qr</mat-option>
+      <mat-option value="interfono">interfono</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- TOTEM DE CAMARAS -->
+  <mat-form-field *ngIf="selectconjuntoEquipo == 'totem de camaras'">
+    <mat-label>Tipo cámara</mat-label>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">photo_camera</mat-icon>
+    <mat-select formControlName="equipo" name="equipo">
+      <mat-option value="camara lectura matriculas"
+        >camara lectura matriculas</mat-option>
+      <mat-option value="camara contexto">camara contexto</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- TORNIQUETE DE PERSONAS -->
+  <mat-form-field *ngIf="selectconjuntoEquipo == 'torniquete de peatones'">
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">people</mat-icon>
+    <mat-label>Tipo de elemento del torniquete</mat-label>
+    <mat-select formControlName="equipo" name="equipo">
+      <mat-option value="dispositivo I/O">dispositivo I/O</mat-option>
+      <mat-option value="lector de tarjetas Mifare"
+        >lector de tarjetas Mifare</mat-option
+      >
+      <mat-option value="lector Qr">lector Qr</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- PUESTO DE VIGILANCIA -->
+  <mat-form-field *ngIf="selectconjuntoEquipo == 'puesto de vigilancia'">
+    <mat-label>Equipo del puesto de vigilancia</mat-label>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">camera_video</mat-icon>
+    <mat-select formControlName="equipo" name="equipo">
+      <mat-option value="servidor">servidor</mat-option>
+      <mat-option value="sai">sai</mat-option>
+      <mat-option value="centralita interfonia"
+        >centralita interfonia</mat-option>
+      <mat-option value="mando a distancia control de barreras: Entrada">mando a distancia control de barreras: Entrada</mat-option>
+      <mat-option value="mando a distancia control de barreras: Salida">mando a distancia control de barreras: Salida</mat-option>
+      <mat-option value="botonera accionamiento manual de barrera">botonera accionamiento manual de barrera</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- MARCA/MODELO -->
+  <div fxLayout="column" fxFlex="100">
+    <div fxLayout="row" fxLayoutAlign="start start">
+  <mat-form-field>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">local_offer</mat-icon>
+    <mat-label> Marca/Modelo</mat-label>
+    <input matInput placeholder="Ingrese la marca y el modelo" formControlName="marcaModelo" name="marcaModelo" required/>
+  </mat-form-field>
+  <!-- PERIOCIDAD -->
+  <mat-form-field>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;"><span class="material-icons-filled">timer</span></mat-icon>
+   <mat-label>Periocidad</mat-label>
+    <mat-select formControlName="periocidad" [(ngModel)]="selectPeriocidad" name="periocidad">
+      <mat-option value="diaria">Diaria</mat-option>
+      <mat-option value="semanal">Semanal</mat-option>
+      <mat-option value="mensual">Mensual</mat-option>
+      <mat-option value="trimestral">Trimestral</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+</div>
+  <!-- CATEGORIA -->
+  <mat-form-field>
+    <mat-icon class="custom-icon" matPrefix style="font-size: 24px;">category</mat-icon>
+    <mat-label>Categoria</mat-label>
+    <mat-select formControlName="categoria" [(ngModel)]="selectCategoria" name="categoria" >
+      <mat-option value="elemento mecanico">Elemento mecánico</mat-option>
+      <mat-option value="dispositivo de control">Dispositivo de control</mat-option>
+      <mat-option value="componentes electricos">Componentes electricos internos de acceso</mat-option>
+    </mat-select></mat-form-field>
+    <div fxLayout="column" fxFlex="100">
+      <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">
+        <a> {{ accion }} Item<mat-icon style="padding-left: 2px;"> add_circle </mat-icon></a>
+      </button>
+    </div>
+</form>
+</mat-card>
+</section>

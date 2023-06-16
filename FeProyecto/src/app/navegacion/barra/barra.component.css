@@ -1,0 +1,92 @@
+a {
+  text-decoration: none;
+  color: #fff !important;
+}
+
+a:hover,
+a:active,
+button:hover {
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  vertical-align: middle;
+  outline: none !important; /* Agrega !important para anular cualquier estilo predeterminado */
+  color: #dbcde6;
+  cursor: pointer;
+}
+
+.navegacion-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contenedor {
+  width: 100%;
+}
+
+.contenedor li {
+  min-width: 80px; /* ajustar el ancho mínimo según sea necesario */
+  vertical-align: middle;
+}
+
+mat-toolbar {
+  height: 8vh;
+}
+
+.navegacion-menu li {
+  text-decoration-color: white;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+button {
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 1000px) {
+  .logo_container a {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .navegacion-menu li a {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .titulo {
+    visibility: hidden;
+    width: 0%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .navegacion-menu li {
+    display: inline-block;
+  }
+}
+
+.titulo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+  height: 5vh;
+  background-color: #4b9fe1;
+  cursor:default;
+}
+
+.titulo a:hover,
+.titulo a:active {
+  color: #fff; /* Anula el color de hover para la clase .titulo */
+  cursor:default;
+}

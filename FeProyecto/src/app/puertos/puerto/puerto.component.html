@@ -1,0 +1,45 @@
+<div fxLayoutAlign style="padding-top: 2vh;">
+  <mat-form-field fxFlex="75%" style="margin-top:10px">
+    <input matInput type="text" (keyup)="hacerFiltro($event)" placeholder="Buscar Ubicación">
+  </mat-form-field>
+</div>
+<div class="center-container">
+<mat-table [dataSource]="dataSourcePuertos" matSort (matSortChange)="ordenarColumna($event)" class="responsive-table">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header >Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nombre }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="items">
+    <mat-header-cell *matHeaderCellDef >Ver ítems</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a [routerLink]="['/items', element.id]"><mat-icon> view_list</mat-icon></a></mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="añadir">
+    <mat-header-cell *matHeaderCellDef >Añadir ítem</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a [routerLink]="['/registrar', element.id]"><mat-icon> add_circle </mat-icon></a></mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="mantenimientos">
+    <mat-header-cell *matHeaderCellDef >Ver mantenimientos</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a [routerLink]="['/mantenimientos', element.id]">  <mat-icon> find_in_page </mat-icon>
+    </a></mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="añadirMantenimiento">
+    <mat-header-cell *matHeaderCellDef >Añadir mantenimiento</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a [routerLink]="['/registrarMantenimiento', element.id]">  <mat-icon> edit_document</mat-icon>
+    </a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="generarPdf">
+    <mat-header-cell *matHeaderCellDef >Generar Pdf</mat-header-cell>
+    <mat-cell *matCellDef="let element"><a (click)="crearPdf(element.id)" style="cursor: pointer;"><mat-icon>picture_as_pdf</mat-icon></a></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="desplegarColumnasPuerto">
+    <mat-row *matRowDef="let row; columns: desplegarColumnasPuerto"> </mat-row>
+  </mat-header-row>
+
+</mat-table>
+</div>
+<mat-paginator (page)="eventoPaginador($event)" #paginacion [pageSize]="puertosPorPagina" [pageSizeOptions]="paginaCombo" [length]="totalPuertos">
+</mat-paginator>
+
